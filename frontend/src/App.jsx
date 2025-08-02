@@ -6,6 +6,7 @@ import HowWork from './component/HowWork';
 import Footer from './component/Footer';
 import Thought from './component/Thought';
 import Register from './component/Register'; 
+import Login from './component/Login';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
 
           {/* Register Page Route */}
           <Route path="/register" element={<Register />} />
-          
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
       <Footer />
