@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5000/api/login', {
+      const res = await axios.post('http://localhost:3000/api/auth/login', {
         email,
         password
       });
@@ -22,7 +22,7 @@ function Login() {
       localStorage.setItem('auth', 'true');
 
       // Redirect to dashboard
-      navigate('/Userdashboard');
+      navigate('/UserReport');
     } catch (error) {
       console.error('Login failed:', error.response?.data || error.message);
       alert("Invalid email or password");

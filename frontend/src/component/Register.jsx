@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import registerImg from '../assets/images/register.png';
 import { Link } from 'react-router-dom';
-import axios from 'axios'; // You can also use fetch if you prefer
+import axios from 'axios';
 
 function Register() {
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
-    phone: '',
+    // phone: '',
     password: ''
   });
 
@@ -19,7 +19,16 @@ function Register() {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5000/api/register', formData); // Replace with your backend URL
+      const { name, email, password /*, phone */ } = formData;
+
+      const payload = {
+        name,
+        email,
+        password,
+        // phone, // Uncomment this if backend starts accepting phone
+      };
+
+      const res = await axios.post('http://localhost:3000/api/auth/signup', payload);
       alert('User registered successfully!');
       console.log(res.data);
     } catch (error) {
@@ -37,7 +46,12 @@ function Register() {
       <div className="row align-items-center justify-content-center">
         {/* Image */}
         <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
-          <img src={registerImg} alt="Join Community" className="img-fluid" style={{ maxWidth: '400px' }} />
+          <img
+            src={registerImg}
+            alt="Join Community"
+            className="img-fluid"
+            style={{ maxWidth: '400px' }}
+          />
         </div>
 
         {/* Form */}
@@ -49,8 +63,8 @@ function Register() {
                 <label className="form-label">User Name:</label>
                 <input
                   type="text"
-                  name="username"
-                  value={formData.username}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   className="form-control"
                   placeholder="Enter your name"
@@ -78,7 +92,7 @@ function Register() {
                   onChange={handleChange}
                   className="form-control"
                   placeholder="+91 Enter your number"
-                  required
+                  disabled // Remove this once backend supports phone
                 />
               </div>
               <div className="mb-3">
@@ -103,7 +117,7 @@ function Register() {
       </div>
 
       <p className="text-center mt-5 fw-bold">
-        <span style={{ color: "#a259ff" }}>Odoo</span> Hakathon 2025
+        <span style={{ color: "#a259ff" }}>Odoo</span> Hackathon 2025
       </p>
     </div>
   );
