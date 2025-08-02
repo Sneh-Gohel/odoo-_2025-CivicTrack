@@ -17,7 +17,7 @@ function Nav() {
           <div className="col-12  col-md-6 d-flex justify-content-center justify-content-md-end flex-wrap gap-2">
             <Link to="/about" className="text-decoration-none text-dark pt-1">About Us</Link>
             <Link to="/info" className="text-decoration-none text-dark pt-1">Info</Link>
-            <Link to="/login" className="btn btn-outline-primary bg-dark text-light btn-sm">Register/Login</Link>
+            <Link to="/Register" className="btn btn-outline-primary bg-dark text-light btn-sm">Register/Login</Link>
           </div>
         </div>
       </div>
