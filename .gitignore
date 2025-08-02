@@ -1,1 +1,3 @@
 node_modules
+BackEnd/firebase_privetKeys.json
+.env
